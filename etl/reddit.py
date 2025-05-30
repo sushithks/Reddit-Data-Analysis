@@ -10,7 +10,7 @@ def connect_reddit(client_id, client_secret, user_agent) -> Reddit:
         reddit = praw.Reddit(client_id=client_id,
                              client_secret=client_secret,
                              user_agent=user_agent)
-        print("connected to reddit!")
+        print("Connection Established !")
         return reddit
     except Exception as e:
         print(e)
