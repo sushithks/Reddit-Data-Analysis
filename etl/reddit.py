@@ -4,6 +4,8 @@ import numpy as np
 import pandas as pd
 import praw
 from praw import Reddit
+from utils.constants import POST_FIELDS
+
 
 def connect_reddit(client_id, client_secret, user_agent) -> Reddit:
     try:
@@ -22,5 +24,9 @@ def extract_posts(reddit_instance: Reddit, subreddit: str, time_filter: str, lim
     posts = subreddit.top(time_filter=time_filter, limit=limit)
 
     post_lists = []
+    for post in posts:
+        post_dict = vars(post)
+        post = {key: post_dict[key] for key in POST_FIELDS}
+        post_lists.append(post)
 
     return post_lists
