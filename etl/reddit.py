@@ -30,3 +30,8 @@ def extract_posts(reddit_instance: Reddit, subreddit: str, time_filter: str, lim
         post_lists.append(post)
 
     return post_lists
+
+def transform_data(post_df: pd.DataFrame):
+    post_df['created_utc'] = pd.to_datetime(post_df['created_utc'], unit='s')
+    post_df['over_18'] = np.where((post_df['over_18'] == True), True, False)
+    post_df['author'] = post_df['author'].astype(str)
