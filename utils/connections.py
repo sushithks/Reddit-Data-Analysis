@@ -7,3 +7,9 @@ parser.read(os.path.join(os.path.dirname(__file__), '../config/config.conf'))
 
 SECRET = parser.get('api_keys', 'secret_key')
 CLIENT_ID = parser.get('api_keys', 'client_id')
+
+DATABASE_HOST =  parser.get('database', 'database_host')
+DATABASE_NAME =  parser.get('database', 'database_name')
+DATABASE_PORT =  parser.get('database', 'database_port')
+DATABASE_USER =  parser.get('database', 'database_username')
+DATABASE_PASSWORD =  parser.get('database', 'database_password')
