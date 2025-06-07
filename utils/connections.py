@@ -22,3 +22,14 @@ AWS_BUCKET_NAME = parser.get('aws', 'aws_bucket_name')
 
 INPUT_PATH = parser.get('file_paths', 'input_path')
 OUTPUT_PATH = parser.get('file_paths', 'output_path')
+
+POST_FIELDS = (
+    'id',
+    'title',
+    'score',
+    'num_comments',
+    'author',
+    'created_utc',
+    'url',
+
+)
