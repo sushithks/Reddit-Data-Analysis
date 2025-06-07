@@ -31,5 +31,8 @@ POST_FIELDS = (
     'author',
     'created_utc',
     'url',
-
+    'over_18',
+    'edited',
+    'spoiler',
+    'stickied'
 )
