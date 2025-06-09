@@ -9,3 +9,11 @@ def connect_to_s3():
         return s3
     except Exception as e:
         print(e)
+def create_bucket_if_not_exist(s3: s3fs.S3FileSystem, bucket:str):
+    if not s3.exists(bucket):
+        s3.mkdir(bucket)
+        print("Bucket created")
+    else :
+        print("Bucket already exists")
+
+
