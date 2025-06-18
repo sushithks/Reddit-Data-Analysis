@@ -19,5 +19,5 @@ dag = DAG(
     default_args=default_args,
     schedule_interval='@once',
     catchup=False,
-    tags=['reddit', 'etl', 'pipeline']
+    tags=['reddit', 'etl']
 )
