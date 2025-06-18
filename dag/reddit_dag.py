@@ -17,6 +17,7 @@ file_postfix = datetime.now().strftime("%Y%m%d")
 dag = DAG(
     dag_id='etl_reddit_pipeline',
     default_args=default_args,
+    schedule_interval='@once',
     catchup=False,
     tags=['reddit', 'etl', 'pipeline']
 )
