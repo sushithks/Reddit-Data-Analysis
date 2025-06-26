@@ -32,7 +32,7 @@ dag_start = DummyOperator(
 
 extract = PythonOperator(
     task_id='reddit_extraction',
-    python_callable=reddit_pipeline,
+    python_callable= reddit_pipeline,
     op_kwargs={
         'file_name': f'reddit_{file_postfix}',
         'subreddit': 'data_engineering',
