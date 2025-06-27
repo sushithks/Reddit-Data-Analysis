@@ -49,9 +49,10 @@ upload_s3 = PythonOperator(
     python_callable=upload_s3_pipeline,
     dag=dag
 )
+# Better use slack notifications
 
 dag_end = DummyOperator(
     task_id='dag_end',
     dag=dag)
 
-dag_start >> extract
+dag_start >> extract >> upload_s3 >> dag_end
