@@ -6,6 +6,7 @@ from airflow.operators.python import PythonOperator
 from airflow.operators.dummy import DummyOperator
 
 from Pipeline_function import reddit_pipeline
+from Pipeline_function.aws_pipeline import upload_s3_pipeline
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -42,4 +43,16 @@ extract = PythonOperator(
     dag=dag
 )
 
-dag_start >> extract
+
+upload_s3 = PythonOperator(
+    task_id='s3_upload',
+    python_callable=upload_s3_pipeline,
+    dag=dag
+)
+# Better use slack notifications
+
+dag_end = DummyOperator(
+    task_id='dag_end',
+    dag=dag)
+
+dag_start >> extract >> upload_s3 >> dag_end
