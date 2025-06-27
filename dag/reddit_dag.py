@@ -50,4 +50,8 @@ upload_s3 = PythonOperator(
     dag=dag
 )
 
+dag_end = DummyOperator(
+    task_id='dag_end',
+    dag=dag)
+
 dag_start >> extract
